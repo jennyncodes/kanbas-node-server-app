@@ -1,4 +1,4 @@
-import * as dao from "./dao.js";
+// import * as dao from "./dao.js";
 import * as assignmentDao from "../Assignments/dao.js";
 
 export default function AssignmentRoutes(app) {
@@ -26,7 +26,7 @@ export default function AssignmentRoutes(app) {
     app.get("/api/courses/:cid/assignments", async (req, res) => {
         const {cid} = req.params;
         const assignments = db.assignments.filter((a) => a.course === cid);
-        const fetchAssignments = await assignmentDao.findAllAssignments(assignments);
+        const fetchAssignments = await assignmentDao.findAssignmentsForCourse(assignments);
         res.send(fetchAssignments);
     });
 
