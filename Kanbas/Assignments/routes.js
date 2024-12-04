@@ -16,18 +16,6 @@ export default function AssignmentRoutes(app) {
     res.send(status);
     });
 
-    app.post("/api/courses/:cid/assignments" , async (req,res)=>{
-        const {cid} = req.params;
-        const assignment = req.body;
-        const newAssignment = await assignmentDao.createAssignment(assignment);
-        res.send(newAssignment);
-    });
 
-    app.get("/api/courses/:cid/assignments", async (req, res) => {
-        const {cid} = req.params;
-        const assignments = db.assignments.filter((a) => a.course === cid);
-        const fetchAssignments = await assignmentDao.findAssignmentsForCourse(assignments);
-        res.send(fetchAssignments);
-    });
 
 }
